@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemical Supplies</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <h1>Chemical Supplies</h1>
+  
+  <div class="toolbar">
+    <button id="add-row">&#x2795; Add Row</button>
+    <button id="move-up">&#x2B06; Move Up</button>
+    <button id="move-down">&#x2B07; Move Down</button>
+    <button id="delete-row">&#x1F5D1; Delete Row</button>
+    <button id="refresh">&#x21BB; Refresh Data</button>
+    <button id="save">&#x1F4BE; Save Data</button>
+  </div>
+  
+  <table id="chemical-table">
+    <thead>
+      <tr>
+        <th id="header-id">ID</th>
+        <th id="header-name">Chemical Name</th>
+        <th id="header-vendor">Vendor</th>
+        <th id="header-density">Density (g/m³)</th>
+        <th id="header-viscosity">Viscosity (m²/s)</th>
+        <th id="header-packaging">Packaging</th>
+        <th id="header-size">Pack Size</th>
+        <th id="header-unit">Unit</th>
+        <th id="header-quantity">Quantity</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <!-- Rows will be dynamically added here -->
+    </tbody>
+  </table>
+
+  <script src="app.js"></script>
+  <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
